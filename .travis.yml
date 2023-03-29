@@ -35,7 +35,6 @@ git:
 
 install: 
   - pip install -r requirements.dev.txt
-  - travis_wait 30 mvn install
 
 before_script:
   - curl -Os --retry 5 https://uploader.codecov.io/latest/linux/codecov
