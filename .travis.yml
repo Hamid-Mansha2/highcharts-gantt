@@ -29,8 +29,7 @@ job:
         - TOXENV=docs
         - YARN_GPG=no
 os:
-  - linux
- # comment test 
+  - linux 
 git:
   quiet: true
 
@@ -41,5 +40,6 @@ before_script:
   - curl -Os --retry 5 https://uploader.codecov.io/latest/linux/codecov
   - chmod +x codecov
 script: tox -- -v -n auto
+  - sleep 5
 after_success:
   - if [[ -e .coverage ]]; then ./codecov -t $CODECOV_TOKEN; fi
