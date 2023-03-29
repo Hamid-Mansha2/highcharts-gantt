@@ -35,12 +35,11 @@ git:
 
 install: 
   - pip install -r requirements.dev.txt
+  - travis_wait 30 mvn install
+
 before_script:
   - curl -Os --retry 5 https://uploader.codecov.io/latest/linux/codecov
   - chmod +x codecov
 script: tox -- -v -n auto
- - command ... > cmd_output.txt
- after_failure:
-- tail -n 500 cmd_output.txt
 after_success:
   - if [[ -e .coverage ]]; then ./codecov -t $CODECOV_TOKEN; fi
